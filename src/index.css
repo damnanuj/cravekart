@@ -1,14 +1,36 @@
 @import "tailwindcss";
 
 
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap');
+
+@layer base {
+
+  *,
+  *::before,
+  *::after {
+
+    box-sizing: border-box;
+  }
+
+  :root {
+    --primary: #024c79;
+    --secondary: #40799e;
+    --bg: #CDECFF;
+    --yellow: #F47900;
+  }
+
+  * {
+    font-family: "DynaPuff";
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+  }
+
+  html {
+
+    font-family: sans-serif;
+    /* color: #333; */
+  }
 }
-
-
-
-
-
-
