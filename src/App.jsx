@@ -10,6 +10,7 @@ const Home = lazy(() => import("./pages/Home"));
 // const Cart = lazy(() => import("./pages/Cart"));
 const PastOrders = lazy(() => import("./pages/Orders"));
 const Checkout = lazy(() => import("./pages/Checkout"));
+const NotFound = lazy(() => import("./pages/NotFoundPage"));
 
 const FallbackLoader = () => (
   <div className="h-[100vh] w-full flex justify-center items-center">
@@ -38,6 +39,8 @@ function App() {
               {/* <Route path="/cart" element={<Cart />} /> */}
               <Route path="/orders" element={<PastOrders />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="*" element={< NotFound/>} />
+
             </Routes>
           </Suspense>
         </div>

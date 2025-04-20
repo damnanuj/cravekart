@@ -3,14 +3,15 @@ import burger from "../../assets/chickenburgur.png";
 import fire from "../../assets/fire.png";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../../redux/slices/cartSlice";
+import { Spin } from "antd";
 
 function ItemDetails({ item }) {
   const dispatch = useDispatch();
 
   if (!item) {
     return (
-      <div className="w-full flex-1 bg-[var(--bg)] overflow-hidden p-5 rounded-3xl shadow-md">
-        Select an item
+      <div className="w-full flex justify-center items-center flex-1 bg-[var(--bg)] overflow-hidden p-5 rounded-3xl shadow-md">
+        <Spin />
       </div>
     );
   }
@@ -38,7 +39,7 @@ function ItemDetails({ item }) {
             <img src={fire} alt="fire" width={15} />
             <p>20Min</p>
           </div>
-          <div className="flex items-center gap-1" >
+          <div className="flex items-center gap-1">
             <img src={fire} alt="fire" width={15} />
             <p>{item?.calories}Kcl</p>
           </div>

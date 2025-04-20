@@ -3,7 +3,7 @@ const BASE_URL = "https://cravekart.onrender.com/api";
 const endpoints = {
   // Order APIs
   createOrder: `${BASE_URL}/order`,
-  getOrderById: (orderId) => `${BASE_URL}/orders/${orderId}`,
+  getPastOrders: (mobNumber) => `${BASE_URL}/orders/${mobNumber}`,
 
   // User APIs
   addUser: `${BASE_URL}/add-user`,

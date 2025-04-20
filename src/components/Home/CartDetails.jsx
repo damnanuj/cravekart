@@ -12,13 +12,16 @@ function CartDetails() {
   );
   const navigate = useNavigate();
 
-  if(cartItems.length===0){
-    return(
-      <div className="w-full justify-center items-center gap-2 text-xs flex flex-col flex-1 bg-[var(--bg)] overflow-hidden p-5 rounded-3xl shadow-md">
-         🛒 Oops... Your cart is emptier than my fridge at midnight!  
-        <p className="text-[var(--yellow)] text-xs text-center "> Start adding some tasty treats 😋🍔🍟🍕</p>
+  if (cartItems.length === 0) {
+    return (
+      <div className="w-full justify-center text-center items-center gap-2 text-xs flex flex-col flex-1 bg-[var(--bg)] overflow-hidden p-5 rounded-3xl shadow-md">
+        🛒 Oops... Your cart is emptier than my fridge at midnight!
+        <p className="text-[var(--yellow)] text-xs text-center ">
+          {" "}
+          Start adding some tasty treats 😋🍔🍟🍕
+        </p>
       </div>
-    )
+    );
   }
 
   return (

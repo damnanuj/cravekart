@@ -35,8 +35,8 @@ const MenuItemCard = ({ item, onItemClick, isActive }) => {
   return (
     <div
       className={`shadow-md flex-1 cursor-pointer rounded-3xl w-fit p-3 flex flex-col items-center gap-2 ${
-        isActive ? "bg-[var(--yellow)] text-white" : "bg-white"
-      }`}
+        isActive ? "bg-[var(--yellow)] text-white" : "bg-white "
+      } transition duration-300 ease-in-out`}
       onClick={() => onItemClick(item)}
     >
       <img
