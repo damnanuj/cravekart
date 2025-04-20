@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import endpoints from "../../src/api/enpoints";
 
 export const fetchMenuItems = createAsyncThunk(
   "menu/fetchMenuItems",
   async () => {
-    const res = await axios.get("http://localhost:8000/api/menu");
-    
+    const res = await axios.get(endpoints.getMenu);
+
     return res.data.data;
   }
 );
