@@ -1,4 +1,3 @@
-
 CraveKart API Endpoints
 =======================
 
@@ -13,13 +12,11 @@ Endpoints:
 
 Order APIs:
 - Create a New Order:
-  POST /order
+  POST /order  
   Usage: endpoints.createOrder
 
 ## 🧾 Sample Order Payload (JSON)
-
 ```json
-
 {
   "name": "Anuj Kumar",
   "phone": "7979746435",
@@ -37,55 +34,50 @@ Order APIs:
   "category": ["Pizza", "Snacks", "Drinks"],
   "item_name": ["Peppy Paneer", "Nachos", "Iced Tea"]
 }
+```
 
-
-
-
-- Get Past Orders by Mobile Number:
-  GET /orders/:mobNumber
+- Get Past Orders by Mobile Number:  
+  GET /orders/:mobNumber  
   Usage: endpoints.getPastOrders(mobNumber)
 
-
 User APIs:
-- Add a New User:
-  POST /add-user
+- Add a New User:  
+  POST /add-user  
   Usage: endpoints.addUser
 
-## 🧾 Sample Order Payload (JSON)
-
+## 👤 Sample User Payload (JSON)
 ```json
+{
+  "name": "Anuj Gupta",
+  "email": "anuj@example.com",
+  "mob_num": "7979746435"
+}
+```
 
-  {
-    "name": "Anuj Gupta",
-    "email": "anuj@example.com",
-    "mob_num": "7979746435"
-  }
-
-- Get All Users:
-  GET /users
+- Get All Users:  
+  GET /users  
   Usage: endpoints.getUsers
 
-
 Menu APIs:
-- Get Full Menu:
-  GET /menu
+- Get Full Menu:  
+  GET /menu  
   Usage: endpoints.getMenu
 
-- Get Menu Item by ID:
-  GET /menu/:itemId
+- Get Menu Item by ID:  
+  GET /menu/:itemId  
   Usage: endpoints.getMenuItemById(itemId)
-
 
 Usage Example:
 --------------
+```js
 import endpoints from './endpoints';
 
-# Example: Fetch menu
+// Example: Fetch menu
 fetch(endpoints.getMenu)
   .then(res => res.json())
   .then(data => console.log(data));
 
-# Example: Create an order
+// Example: Create an order
 fetch(endpoints.createOrder, {
   method: "POST",
   headers: {
@@ -93,6 +85,7 @@ fetch(endpoints.createOrder, {
   },
   body: JSON.stringify(orderData)
 });
+```
 
 File Location:
 --------------
