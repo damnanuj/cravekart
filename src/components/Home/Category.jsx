@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 function Category({ activeCategory, setActiveCategory }) {
   const menuCategories = useSelector((state) => state?.menu?.items);
 
-  console.log(menuCategories);
+  // console.log(menuCategories);
 
   return (
     <div className="w-full mb-3">

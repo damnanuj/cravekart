@@ -1,36 +1,8 @@
 import React from "react";
 import fire from "../../assets/fire.png";
 
-import chickenburger from "../../assets/chickenburgur.png";
-import cheeseburger from "../../assets/cheeseburgur.png";
-import blackburger from "../../assets/blackBurger.png";
-import beefburger from "../../assets/Beefburgur.png";
-
-const menuItems = [
-  {
-    name: "Chicken Burger",
-    image: chickenburger,
-    price: "₹230",
-  },
-  {
-    name: "Cheese Burger",
-    image: cheeseburger,
-    price: "₹329",
-  },
-  {
-    name: "Black Burger",
-    image: blackburger,
-    price: "₹865",
-  },
-  {
-    name: "Beef Burger",
-    image: beefburger,
-    price: "₹999",
-  },
-];
-
 function PopularMenus({ filteredMenu, onItemClick, activeItem }) {
-  console.log(filteredMenu);
+  // console.log(filteredMenu);
   return (
     <div className="w-full h-full  flex-1 flex flex-col">
       {/* Header */}
@@ -44,7 +16,7 @@ function PopularMenus({ filteredMenu, onItemClick, activeItem }) {
 
       {/* Cards Section */}
       <div className=" w-full flex-1 overflow-y-auto flex gap-4 flex-wrap ">
-        {filteredMenu.map((item) => (
+        {filteredMenu?.map((item) => (
           <MenuItemCard
             key={item._id}
             isActive={activeItem?._id === item._id}

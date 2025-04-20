@@ -38,7 +38,7 @@ function ItemDetails({ item }) {
             <img src={fire} alt="fire" width={15} />
             <p>20Min</p>
           </div>
-          <div className="flex items-center" gap-1>
+          <div className="flex items-center gap-1" >
             <img src={fire} alt="fire" width={15} />
             <p>{item?.calories}Kcl</p>
           </div>
