@@ -14,6 +14,14 @@ const PgUserModel = (sequelize) => {
         isEmail: true,
       },
     },
+    mob_num: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
+      validate: {
+        is: /^[6-9]\d{9}$/,
+      },
+    },
   });
 };
 

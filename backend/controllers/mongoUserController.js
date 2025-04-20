@@ -1,4 +1,4 @@
-import MongoUser from "../models/mongoUser.js";
+import MongoUser from "../models/mongo/mongoUser.js";
 
 export const getMongoUsers = async (req, res) => {
   try {

@@ -6,11 +6,11 @@ const router = express.Router();
 let PgUser = null;
 
 export const initPgUser = async (sequelize) => {
-  PgUser = (await import("../models/pgUser.js")).default(sequelize);
+  PgUser = (await import("../models/pg/pgUser.js")).default(sequelize);
   await PgUser.sync();
 };
 
-router.get("/pg-users", (req, res) => getPgUsers(PgUser, req, res));
-router.post("/pg-users", (req, res) => addPgUser(PgUser, req, res));
+router.get("/users", (req, res) => getPgUsers(PgUser, req, res));
+router.post("/add-user", (req, res) => addPgUser(PgUser, req, res));
 
 export default router;

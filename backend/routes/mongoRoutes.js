@@ -1,8 +1,10 @@
 import express from "express";
-import { getMongoUsers } from "../controllers/mongoUserController.js";
+import { getAllMenuItems } from "../controllers/mongo/menuController.js";
+
 
 const router = express.Router();
 
-router.get("/mongo-users", getMongoUsers);
+
+router.get("/menu", getAllMenuItems);
 
 export default router;

@@ -16,7 +16,9 @@ const FallbackLoader = () => (
 
 function App() {
   return (
-    <Router> {/* 👈 Wrap everything inside <Router> */}
+    <Router>
+      {" "}
+      {/* 👈 Wrap everything inside <Router> */}
       <div className="w-full h-[100vh] flex overflow-hidden">
         <Sidebar />
 
