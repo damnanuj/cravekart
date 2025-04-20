@@ -5,12 +5,11 @@ export const getAllMenuItems = async (req, res) => {
   try {
     const items = await MenuItem.find();
 
-   
     const categorizedItems = items.reduce((acc, item) => {
       if (!acc[item.category]) {
         acc[item.category] = {
           category: item.category,
-          categoryImg: item.categoryImage, 
+          categoryImg: item.categoryImage,
           items: [],
         };
       }
@@ -18,8 +17,7 @@ export const getAllMenuItems = async (req, res) => {
       return acc;
     }, {});
 
-  
-    const data = Object.values(categorizedItems); 
+    const data = Object.values(categorizedItems);
 
     res.status(200).json({
       success: true,
@@ -36,7 +34,6 @@ export const getAllMenuItems = async (req, res) => {
     });
   }
 };
-
 
 // >>============ Get Single Menu Item by ID =============>>
 export const getSingleMenuItem = async (req, res) => {

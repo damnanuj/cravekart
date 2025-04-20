@@ -7,7 +7,7 @@ import { fetchMenuItems } from "../redux/slices/menuSlice";
 
 // Lazy-loaded pages
 const Home = lazy(() => import("./pages/Home"));
-const Cart = lazy(() => import("./pages/Cart"));
+// const Cart = lazy(() => import("./pages/Cart"));
 const PastOrders = lazy(() => import("./pages/Orders"));
 const Checkout = lazy(() => import("./pages/Checkout"));
 
@@ -23,7 +23,6 @@ function App() {
   useEffect(() => {
     dispatch(fetchMenuItems());
   }, [dispatch]);
-  
 
   return (
     <Router>
@@ -36,7 +35,7 @@ function App() {
           <Suspense fallback={<FallbackLoader />}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/cart" element={<Cart />} />
+              {/* <Route path="/cart" element={<Cart />} /> */}
               <Route path="/orders" element={<PastOrders />} />
               <Route path="/checkout" element={<Checkout />} />
             </Routes>
