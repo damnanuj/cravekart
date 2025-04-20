@@ -4,12 +4,15 @@ import connectDatabases from "./db/dbConnect.js";
 import mongoRoutes from "./routes/mongoRoutes.js";
 import pgRoutes, { initPgUser } from "./routes/pgRoutes.js";
 import orderRoutes , {initOrders} from "./routes/orderRoutes.js"
-
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
+
 app.use(express.json());
+app.use(cors({ origin: 'http://localhost:5173' }));
+
 
 const PORT = process.env.PORT || 8000;
 

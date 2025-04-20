@@ -5,21 +5,39 @@ export const getAllMenuItems = async (req, res) => {
   try {
     const items = await MenuItem.find();
 
+   
+    const categorizedItems = items.reduce((acc, item) => {
+      if (!acc[item.category]) {
+        acc[item.category] = {
+          category: item.category,
+          categoryImg: item.categoryImage, 
+          items: [],
+        };
+      }
+      acc[item.category].items.push(item);
+      return acc;
+    }, {});
+
+  
+    const data = Object.values(categorizedItems); 
+
     res.status(200).json({
       success: true,
       message: "Menu items fetched successfully",
-      total: items.length,
+      totalCategories: Object.keys(categorizedItems).length,
       source: "MongoDB",
-      data: items,
+      data: data,
     });
   } catch (error) {
-    console.error("Error fetching menu items:", error);
+    console.error("Error fetching and categorizing menu items:", error);
     res.status(500).json({
       success: false,
-      message: "Server error while fetching menu items",
+      message: "Server error while fetching and categorizing menu items",
     });
   }
 };
+
+
 // >>============ Get Single Menu Item by ID =============>>
 export const getSingleMenuItem = async (req, res) => {
   const { id } = req.params;

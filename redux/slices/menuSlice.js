@@ -5,7 +5,8 @@ export const fetchMenuItems = createAsyncThunk(
   "menu/fetchMenuItems",
   async () => {
     const res = await axios.get("http://localhost:8000/api/menu");
-    return res.data;
+    
+    return res.data.data;
   }
 );
 

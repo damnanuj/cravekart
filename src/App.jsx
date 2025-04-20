@@ -1,12 +1,15 @@
 import { Spin } from "antd";
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
+import { useDispatch } from "react-redux";
+import { fetchMenuItems } from "../redux/slices/menuSlice";
 
 // Lazy-loaded pages
 const Home = lazy(() => import("./pages/Home"));
 const Cart = lazy(() => import("./pages/Cart"));
 const PastOrders = lazy(() => import("./pages/Orders"));
+const Checkout = lazy(() => import("./pages/Checkout"));
 
 const FallbackLoader = () => (
   <div className="h-[100vh] w-full flex justify-center items-center">
@@ -15,6 +18,13 @@ const FallbackLoader = () => (
 );
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchMenuItems());
+  }, [dispatch]);
+  
+
   return (
     <Router>
       {" "}
@@ -28,6 +38,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/orders" element={<PastOrders />} />
+              <Route path="/checkout" element={<Checkout />} />
             </Routes>
           </Suspense>
         </div>

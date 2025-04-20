@@ -4,6 +4,7 @@ import {
   faHouse,
   faCartShopping,
   faClockRotateLeft,
+  faMoneyBill
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 
@@ -51,6 +52,15 @@ const Sidebar = () => {
         >
           <FontAwesomeIcon icon={faClockRotateLeft} />
           Orders
+        </NavLink>
+        <NavLink
+          to="/checkout"
+          className={({ isActive }) =>
+            `${linkStyle} ${isActive ? activeStyle : ""} text-sm`
+          }
+        >
+          <FontAwesomeIcon icon={faMoneyBill} />
+          Checkout
         </NavLink>
       </div>
     </div>
