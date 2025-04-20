@@ -67,26 +67,6 @@ Menu APIs:
   GET /menu/:itemId  
   Usage: endpoints.getMenuItemById(itemId)
 
-Usage Example:
---------------
-```js
-import endpoints from './endpoints';
-
-// Example: Fetch menu
-fetch(endpoints.getMenu)
-  .then(res => res.json())
-  .then(data => console.log(data));
-
-// Example: Create an order
-fetch(endpoints.createOrder, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(orderData)
-});
-```
-
 File Location:
 --------------
 Ensure this file is saved as `endpoints.js` and imported wherever API routes are required in your project.
