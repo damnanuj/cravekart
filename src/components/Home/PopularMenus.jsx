@@ -10,28 +10,28 @@ const menuItems = [
   {
     name: "Chicken Burger",
     image: chickenburger,
-    price: "$6.99",
+    price: "₹230",
   },
   {
     name: "Cheese Burger",
     image: cheeseburger,
-    price: "$7.49",
+    price: "₹329",
   },
   {
     name: "Black Burger",
     image: blackburger,
-    price: "$8.25",
+    price: "₹865",
   },
   {
     name: "Beef Burger",
     image: beefburger,
-    price: "$9.99",
+    price: "₹999",
   },
 ];
 
 function PopularMenus() {
   return (
-    <div className="w-full h-full border flex-1 flex flex-col">
+    <div className="w-full h-full  flex-1 flex flex-col">
       {/* Header */}
       <div className="flex justify-between items-center">
         <div className="flex gap-2 items-center mb-2">
@@ -42,7 +42,7 @@ function PopularMenus() {
       </div>
 
       {/* Cards Section */}
-      <div className="border w-full flex-1 overflow-y-auto flex gap-4 flex-wrap ">
+      <div className=" w-full flex-1 overflow-y-auto flex gap-4 flex-wrap ">
         {menuItems.map((item, index) => (
           <MenuItemCard key={index} item={item} />
         ))}
@@ -55,10 +55,31 @@ export default PopularMenus;
 
 const MenuItemCard = ({ item }) => {
   return (
-    <div className="bg-white flex-1 border rounded-3xl w-fit p-3 flex flex-col items-center gap-2">
-      <img src={item.image} alt={item.name} width={100} />
+    <div className="bg-white shadow-md flex-1  rounded-3xl w-fit p-3 flex flex-col items-center gap-2">
+      <img
+        src={item.image}
+        alt={item.name}
+        className="w-24 h-24 object-contain rounded-lg" // You can adjust the width and height here as needed
+      />
       <p className="text-sm font-semibold">{item.name}</p>
-      <p className="text-xs text-gray-500">{item.price}</p>
+
+      {/* ======================KCL TIME RATING DIV============ */}
+      <div className="text-[10px] w-full flex items-center text-gray-500 justify-between">
+        <div className="flex items-center gap-1">
+          <img src={fire} alt="fire" width={15} />
+          <p>4.5K</p>
+        </div>
+        <div className="flex items-center gap-1">
+          <img src={fire} alt="fire" width={15} />
+          <p>20Min</p>
+        </div>
+        <div className="flex items-center gap-1">
+          <img src={fire} alt="fire" width={15} />
+          <p>30Kcl</p>
+        </div>
+      </div>
+
+      <p className="text-lg">{item.price}</p>
     </div>
   );
 };

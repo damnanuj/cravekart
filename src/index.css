@@ -11,7 +11,9 @@
 
     box-sizing: border-box;
   }
-
+  ::-webkit-scrollbar {
+    display: none;
+  }
   :root {
     --primary: #024c79;
     --secondary: #40799e;

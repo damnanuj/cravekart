@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const MenuItemSchema = new mongoose.Schema(
   {
@@ -14,16 +14,16 @@ const MenuItemSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      enum: ['Pizza', 'Burger', 'Snacks', 'Drinks', 'Ice Cream'],
+      enum: ["Pizza", "Burger", "Snacks", "Drinks", "Ice Cream"],
     },
     categoryImage: {
-      type: String, // Cloudinary or image hosting URL
+      type: String,
       default: null,
     },
     itemImages: [
       {
-        type: String, // Array of image URLs
-      }
+        type: String,
+      },
     ],
     rating: {
       type: Number,
@@ -39,12 +39,17 @@ const MenuItemSchema = new mongoose.Schema(
       type: Number,
       default: null,
     },
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
   },
   {
     timestamps: true,
   }
 );
 
-const MenuItem = mongoose.model('MenuItem', MenuItemSchema);
+const MenuItem = mongoose.model("MenuItem", MenuItemSchema);
 
 export default MenuItem;
