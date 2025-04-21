@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import endpoints from "../../src/api/enpoints";
+import endpoints from "../../api/enpoints";
 
 export const fetchMenuItems = createAsyncThunk(
   "menu/fetchMenuItems",

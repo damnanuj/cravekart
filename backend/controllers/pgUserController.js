@@ -20,6 +20,10 @@ export const getPgUsers = async (PgUser, req, res) => {
 
 
 export const addPgUser = async (PgUser, req, res) => {
+  
+  if(!req.body){
+    return res.status(400).json({ error: "Request body is missing." });
+  }
   const { name, email, mob_num } = req.body;
 
   if (!name || !email || !mob_num) {

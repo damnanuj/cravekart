@@ -35,7 +35,7 @@ const Sidebar = () => {
           <FontAwesomeIcon icon={faHouse} />
           Home
         </NavLink>
-        {/* <NavLink
+        <NavLink
           to="/cart"
           className={({ isActive }) =>
             `${linkStyle} ${isActive ? activeStyle : ""} text-sm`
@@ -43,7 +43,7 @@ const Sidebar = () => {
         >
           <FontAwesomeIcon icon={faCartShopping} />
           Cart
-        </NavLink> */}
+        </NavLink>
         <NavLink
           to="/orders"
           className={({ isActive }) =>

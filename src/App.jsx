@@ -3,11 +3,11 @@ import React, { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import { useDispatch } from "react-redux";
-import { fetchMenuItems } from "../redux/slices/menuSlice";
+import { fetchMenuItems } from "./redux/slices/menuSlice";
 
 // Lazy-loaded pages
 const Home = lazy(() => import("./pages/Home"));
-// const Cart = lazy(() => import("./pages/Cart"));
+const Cart = lazy(() => import("./pages/Cart"));
 const PastOrders = lazy(() => import("./pages/Orders"));
 const Checkout = lazy(() => import("./pages/Checkout"));
 const NotFound = lazy(() => import("./pages/NotFoundPage"));
@@ -36,11 +36,10 @@ function App() {
           <Suspense fallback={<FallbackLoader />}>
             <Routes>
               <Route path="/" element={<Home />} />
-              {/* <Route path="/cart" element={<Cart />} /> */}
+              <Route path="/cart" element={<Cart />} />
               <Route path="/orders" element={<PastOrders />} />
               <Route path="/checkout" element={<Checkout />} />
-              <Route path="*" element={< NotFound/>} />
-
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
         </div>

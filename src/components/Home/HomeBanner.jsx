@@ -3,7 +3,7 @@ import couple from "../../assets/couple.png";
 
 function HomeBanner() {
   return (
-    <div className=" my-3 bg-[var(--primary)] w-full h-[150px] rounded-2xl flex justify-between items-center lg:px-16 px-4">
+    <div className=" bg-[var(--primary)] w-full flex-1 rounded-2xl flex justify-between items-center lg:px-16 px-4">
       <div className=" lg:w-1/3 w-full flex flex-col gap-3">
         <h1  className="font-medium  text-white text-lg lg:text-xl">
           Order Food and Get Discount Up To

@@ -30,27 +30,32 @@ function Home() {
 
   return (
     <div className="w-full h-[100vh] flex flex-col lg:flex lg:flex-row gap-5  p-5">
-      <div className="lg:w-[70%] flex flex-col  w-full h-[full] p-5 bg-[var(--bg)] rounded-3xl shadow-md ">
-        <Header />
-        <HomeBanner />
-        {menu.length > 0 ? (
-          <>
-            <Category
-              activeCategory={activeCategory}
-              setActiveCategory={setActiveCategory}
-            />
-            <PopularMenus
-              activeItem={activeItem}
-              filteredMenu={filteredMenu[0]?.items}
-              onItemClick={setActiveItem}
-            />
-          </>
-        ) : (
-          <div className="flex w-full justify-center items-center h-full ">
-            <Spin />
-          </div>
-        )}
+      <div className="lg:w-[70%] overflow-y-scroll flex flex-col gap-3  w-full h-full p-5 bg-[var(--bg)] rounded-3xl shadow-md ">
+        <div className=" w-full flex flex-col gap-3  h-[50%]">
+          <Header />
+          <HomeBanner />
+        </div>
+        <div className=" w-full h-[50%]">
+          {menu.length > 0 ? (
+            <>
+              <Category
+                activeCategory={activeCategory}
+                setActiveCategory={setActiveCategory}
+              />
+              <PopularMenus
+                activeItem={activeItem}
+                filteredMenu={filteredMenu[0]?.items}
+                onItemClick={setActiveItem}
+              />
+            </>
+          ) : (
+            <div className="flex w-full justify-center items-center h-full ">
+              <Spin />
+            </div>
+          )}
+        </div>
       </div>
+      {/* ====right side ==== */}
       <div className="lg:w-[30%] flex flex-col gap-5  w-full h-full  ">
         <ItemDetails item={activeItem} />
         <CartDetails />
