@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import HomeBanner from "../components/Home/HomeBanner";
 import Header from "../components/Home/Header";
 import Category from "../components/Home/Category";
@@ -12,10 +12,10 @@ function Home() {
   const isLoading = useSelector((state) => state?.menu?.loading);
   // console.log(isLoading);
   return (
-    <div className="w-full h-[100vh] flex flex-col lg:flex lg:flex-row gap-5  p-5">
+    <div className="w-full lg:h-[100vh] flex flex-col lg:flex lg:flex-row gap-5  p-5">
       <div className="lg:w-[70%] overflow-y-scroll flex flex-col gap-3  w-full h-full p-5 bg-[var(--bg)] rounded-3xl shadow-md ">
         <div className=" w-full flex flex-col gap-3  h-[50%]">
-          <Header />
+          <Header />    
           <HomeBanner />
         </div>
         <div className=" w-full h-[50%]">

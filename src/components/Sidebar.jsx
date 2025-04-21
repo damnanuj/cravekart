@@ -7,8 +7,11 @@ import {
   faMoneyBill,
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
+  const cartCount = useSelector((state) => state.cart.cartItems.length);
+
   const linkStyle =
     "flex items-center gap-2 px-4 py-2 hover:bg-[#40799e] text-white rounded text-lg font-medium";
   const activeStyle = "bg-[#40799e]";
@@ -38,11 +41,16 @@ const Sidebar = () => {
         <NavLink
           to="/cart"
           className={({ isActive }) =>
-            `${linkStyle} ${isActive ? activeStyle : ""} text-sm`
+            `${linkStyle} ${isActive ? activeStyle : ""} text-sm `
           }
         >
           <FontAwesomeIcon icon={faCartShopping} />
           Cart
+          {cartCount > 0 && (
+            <div className="bg-[var(--yellow)] px-2 rounded-full">
+              {cartCount}
+            </div>
+          )}
         </NavLink>
         <NavLink
           to="/orders"

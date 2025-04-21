@@ -15,7 +15,7 @@ const menuSlice = createSlice({
   name: "menu",
   initialState: {
     items: [],
-    selectedCategory: "Burger",
+    selectedCategory: "Pizza",
     filteredItems: [],
     selectedItem: {},
     loading: false,
