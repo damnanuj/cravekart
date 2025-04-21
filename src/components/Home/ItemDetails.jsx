@@ -7,13 +7,13 @@ import { Spin } from "antd";
 
 function ItemDetails() {
   const item = useSelector((state) => state?.menu?.selectedItem);
+  const isLoading = useSelector((state) => state?.menu?.loading);
 
-  // console.log(item)
   const dispatch = useDispatch();
 
-  if (!item) {
+  if (isLoading) {
     return (
-      <div className="w-full flex justify-center items-center flex-1 bg-[var(--bg)] overflow-hidden p-5 rounded-3xl shadow-md">
+      <div className="w-full flex justify-center items-center min-h-[35%] bg-[var(--bg)] overflow-hidden p-5 rounded-3xl shadow-md">
         <Spin />
       </div>
     );

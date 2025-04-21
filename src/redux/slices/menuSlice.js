@@ -6,7 +6,6 @@ export const fetchMenuItems = createAsyncThunk(
   "menu/fetchMenuItems",
   async () => {
     const res = await axios.get(endpoints.getMenu);
-
     return res.data.data;
   }
 );
@@ -15,7 +14,7 @@ const menuSlice = createSlice({
   name: "menu",
   initialState: {
     items: [],
-    selectedCategory: "Pizza",
+    selectedCategory: "Burger",
     filteredItems: [],
     selectedItem: {},
     loading: false,
@@ -26,7 +25,7 @@ const menuSlice = createSlice({
     setSelectedCategory: (state, { payload }) => {
       state.selectedCategory = payload;
       state.filteredItems = state.items.filter(
-        (item) => item.category == payload
+        (item) => item.category == state.selectedCategory
       );
       state.selectedItem = state.filteredItems[0]?.items[0];
     },
