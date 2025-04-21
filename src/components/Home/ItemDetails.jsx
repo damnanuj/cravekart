@@ -1,11 +1,14 @@
 import React from "react";
 import burger from "../../assets/chickenburgur.png";
 import fire from "../../assets/fire.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlice";
 import { Spin } from "antd";
 
-function ItemDetails({ item }) {
+function ItemDetails() {
+  const item = useSelector((state) => state?.menu?.selectedItem);
+
+  // console.log(item)
   const dispatch = useDispatch();
 
   if (!item) {
@@ -18,7 +21,7 @@ function ItemDetails({ item }) {
   return (
     <div className="w-full bg-[var(--bg)] overflow-y-scroll p-5 rounded-3xl shadow-md">
       <div className="w-full flex justify-center items-center">
-        <img src={item?.itemImages[0]} alt="item" width={"55%"} />
+        <img src={item?.itemImages?.[0]} alt="item" width={"55%"} />
       </div>
 
       {/* ======details===== */}

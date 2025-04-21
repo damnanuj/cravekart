@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-function Category({ activeCategory, setActiveCategory }) {
+import { setSelectedCategory } from "../../redux/slices/menuSlice";
+
+function Category() {
   const menuCategories = useSelector((state) => state?.menu?.items);
 
+  const activeCategory = useSelector((state) => state?.menu?.selectedCategory);
+
+  const dispatch = useDispatch();
   // console.log(menuCategories);
 
   return (
@@ -17,7 +22,7 @@ function Category({ activeCategory, setActiveCategory }) {
           return (
             <div
               key={item.category}
-              onClick={() => setActiveCategory(item.category)}
+              onClick={() => dispatch(setSelectedCategory(item.category))}
               className={`p-2 px-6 flex-1 w-fit flex items-center justify-center gap-2 rounded-xl cursor-pointer
     transition duration-300 ease-in-out
     ${isActive ? "bg-[var(--yellow)] text-white" : "bg-white text-black"}`}

@@ -15,8 +15,24 @@ const menuSlice = createSlice({
   name: "menu",
   initialState: {
     items: [],
+    selectedCategory: "Burger",
+    filteredItems: [],
+    selectedItem: {},
     loading: false,
     error: null,
+  },
+
+  reducers: {
+    setSelectedCategory: (state, { payload }) => {
+      state.selectedCategory = payload;
+      state.filteredItems = state.items.filter(
+        (item) => item.category == payload
+      );
+      state.selectedItem = state.filteredItems[0]?.items[0];
+    },
+    setSelectedItem: (state, { payload }) => {
+      state.selectedItem = payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -24,8 +40,13 @@ const menuSlice = createSlice({
         state.loading = true;
       })
       .addCase(fetchMenuItems.fulfilled, (state, action) => {
-        state.items = action.payload;
         state.loading = false;
+        state.items = action.payload;
+        // console.log(state.items);
+        state.filteredItems = state.items.filter(
+          (item) => item.category == state.selectedCategory
+        );
+        state.selectedItem = state.filteredItems[0]?.items[0];
       })
       .addCase(fetchMenuItems.rejected, (state, action) => {
         state.loading = false;
@@ -33,5 +54,12 @@ const menuSlice = createSlice({
       });
   },
 });
+
+export const { setSelectedCategory, setSelectedItem } = menuSlice.actions;
+
+export const selectMenuItems = (state) => state.menu.items;
+export const selectFilteredItems = (state) => state.menu.filteredItems;
+export const selectSelectedItem = (state) => state.menu.selectedItem;
+export const selectSelectedCategory = (state) => state.menu.selectedCategory;
 
 export default menuSlice.reducer;
