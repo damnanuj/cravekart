@@ -5,6 +5,7 @@ import mongoRoutes from "./routes/mongoRoutes.js";
 import pgRoutes, { initPgUser } from "./routes/pgRoutes.js";
 import orderRoutes , {initOrders} from "./routes/orderRoutes.js"
 import cors from "cors";
+import startCron from "./cron/keepAliveCron.js";
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ const startServer = async () => {
   app.listen(PORT, () => {
     console.log(`🚀 Server is running on port ${PORT}`);
   });
+  startCron()
 };
 
 startServer();
