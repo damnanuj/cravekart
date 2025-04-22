@@ -13,7 +13,7 @@ function Header({ showMobileDrawer, setShowMobileDrawer }) {
     >
       <p
         onClick={() => navigate("/")}
-        className="text-xl font-bold text-center text-white"
+        className="text-xl cursor-pointer font-bold text-center text-white"
       >
         The Digital Diner
       </p>

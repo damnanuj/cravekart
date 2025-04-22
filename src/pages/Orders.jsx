@@ -40,13 +40,13 @@ function Orders() {
 
   if (loading)
     return (
-      <div className="w-full h-full flex justify-center items-center">
+      <div className="w-full h-[calc(100vh-64px)] flex justify-center items-center">
         Loading your tasty history... 🍕🍔🍟
       </div>
     );
 
   return (
-    <div className="w-full h-full p-4">
+    <div className="w-full h-full p-4 bg-[var(--bg)]">
       <h2 className="text-xl font-bold mb-4">🍽️ Your Past Orders</h2>
       {orders.length === 0 ? (
         <div className="text-gray-600 w-full h-1/2 flex justify-center items-center">
@@ -57,7 +57,7 @@ function Orders() {
           {orders.map((order) => (
             <div
               key={order.id}
-              className="border border-gray-300 rounded-2xl p-4 shadow-md"
+              className="lg:border lg:border-gray-300 rounded-2xl p-4 shadow-md"
             >
               <div className="flex justify-between items-center mb-2">
                 <p className="font-semibold text-sm">Order ID: #{order.id}</p>

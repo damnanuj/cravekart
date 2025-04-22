@@ -10,7 +10,8 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Sidebar = () => {
-  const cartCount = useSelector((state) => state.cart.cartItems.length);
+  const cartCount = useSelector((state) => state.cart.totalQuantity);
+  console.log(cartCount);
 
   const linkStyle =
     "flex items-center gap-2 px-4 py-2 hover:bg-[#40799e] text-white rounded text-lg font-medium";
