@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import { useDispatch } from "react-redux";
 import { fetchMenuItems } from "./redux/slices/menuSlice";
@@ -29,7 +29,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Router>
+    <BrowserRouter>
       <Header
         showMobileDrawer={showMobileDrawer}
         setShowMobileDrawer={setShowMobileDrawer}
@@ -55,7 +55,7 @@ function App() {
         setShowMobileDrawer={setShowMobileDrawer}
         showMobileDrawer={showMobileDrawer}
       />
-    </Router>
+    </BrowserRouter>
   );
 }
 
