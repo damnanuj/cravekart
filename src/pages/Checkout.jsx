@@ -73,11 +73,14 @@ function Checkout() {
               />
               <div className="flex-1">
                 <h4 className="text-sm font-medium">{item.item_name}</h4>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs text-gray-500">
                   Quantity: {item.quantity}
                 </p>
               </div>
+             <div className="flex flex-col"> 
+             <p className="text-[10px] text-gray-400">₹{item.price}x{item.quantity}</p>
               <p className="text-sm">₹{item.price * item.quantity}</p>
+             </div>
             </div>
           ))}
           <div className="flex justify-between mt-4 font-medium">
