@@ -1,9 +1,12 @@
 import React from "react";
 import profile from "../../assets/profile.png";
-function Header() {
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+function Heading() {
   return (
     <>
-      <p className="text-xl font-bold text-center">The Digital Diner</p>
+      
       <div className="w-full  flex items-center justify-between">
         <div className="flex flex-col gap-2 ">
           <h1 className="text-gray-500 font-semibold">Welcome, Anuj</h1>
@@ -20,4 +23,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Heading;

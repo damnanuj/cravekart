@@ -1,9 +1,10 @@
 import React from "react";
 
-import { Modal } from "antd";
+import { Modal, message } from "antd";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { clearCart } from "../redux/slices/cartSlice";
 function Checkout() {
   const [showAddressForm, setShowAddressForm] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -12,15 +13,44 @@ function Checkout() {
     mobile: "",
     address: "",
   });
+  const [errors, setErrors] = useState({});
 
   const cartItems = useSelector((state) => state.cart.cartItems);
   const total = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!address.name.trim()) {
+      newErrors.name = "Name is required";
+    }
+
+    if (!address.mobile.trim()) {
+      newErrors.mobile = "Mobile number is required";
+    } else if (!/^[0-9]{10}$/.test(address.mobile)) {
+      newErrors.mobile = "Please enter a valid 10-digit mobile number";
+    }
+
+    if (!address.address.trim()) {
+      newErrors.address = "Address is required";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handlePlaceOrder = () => {
-    setShowSuccessModal(true);
+    if (validateForm()) {
+      setShowSuccessModal(true);
+      message.success("Order placed successfully!");
+      dispatch(clearCart());
+     
+    }
   };
 
   return (
@@ -68,33 +98,57 @@ function Checkout() {
           <div className="bg-white p-5 rounded-lg shadow">
             <h3 className="text-lg mb-4">Delivery Address</h3>
             <form className="flex flex-col gap-4">
-              <input
-                type="text"
-                placeholder="Full Name"
-                value={address.name}
-                onChange={(e) =>
-                  setAddress({ ...address, name: e.target.value })
-                }
-                className="border p-2 rounded"
-              />
-              <input
-                type="tel"
-                placeholder="Mobile Number"
-                value={address.mobile}
-                onChange={(e) =>
-                  setAddress({ ...address, mobile: e.target.value })
-                }
-                className="border p-2 rounded"
-              />
-              <textarea
-                placeholder="Delivery Address"
-                value={address.address}
-                onChange={(e) =>
-                  setAddress({ ...address, address: e.target.value })
-                }
-                className="border p-2 rounded"
-                rows={3}
-              />
+              <div>
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  value={address.name}
+                  onChange={(e) =>
+                    setAddress({ ...address, name: e.target.value })
+                  }
+                  className={`border p-2 rounded w-full ${
+                    errors.name ? "border-red-500" : ""
+                  }`}
+                />
+                {errors.name && (
+                  <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+                )}
+              </div>
+
+              <div>
+                <input
+                  type="tel"
+                  placeholder="Mobile Number"
+                  value={address.mobile}
+                  onChange={(e) =>
+                    setAddress({ ...address, mobile: e.target.value })
+                  }
+                  className={`border p-2 rounded w-full ${
+                    errors.mobile ? "border-red-500" : ""
+                  }`}
+                />
+                {errors.mobile && (
+                  <p className="text-red-500 text-xs mt-1">{errors.mobile}</p>
+                )}
+              </div>
+
+              <div>
+                <textarea
+                  placeholder="Delivery Address"
+                  value={address.address}
+                  onChange={(e) =>
+                    setAddress({ ...address, address: e.target.value })
+                  }
+                  className={`border p-2 rounded w-full ${
+                    errors.address ? "border-red-500" : ""
+                  }`}
+                  rows={3}
+                />
+                {errors.address && (
+                  <p className="text-red-500 text-xs mt-1">{errors.address}</p>
+                )}
+              </div>
+
               <button
                 type="button"
                 onClick={handlePlaceOrder}
@@ -110,8 +164,13 @@ function Checkout() {
         <Modal
           title="Order Placed Successfully! 🎉"
           open={showSuccessModal}
-          onOk={() => setShowSuccessModal(false)}
-          onCancel={() => setShowSuccessModal(false)}
+          onOk={() => {
+            setShowSuccessModal(false);
+            navigate("/");
+          }}
+          closeIcon={false}
+          okText="Go Back to Home"
+          cancelButtonProps={{ style: { display: 'none' } }}
         >
           <p>
             Your order has been placed successfully! 🍔 Thank you for shopping

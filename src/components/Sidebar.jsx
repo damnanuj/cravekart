@@ -17,7 +17,10 @@ const Sidebar = () => {
   const activeStyle = "bg-[#40799e]";
 
   return (
-    <div className="w-[150px] hidden lg:flex h-[100vh] bg-[#024c79] items-center p-4  flex-col gap-10">
+    <div
+      className={`w-[150px]   h-[calc(100vh-64px)] bg-[#024c79] items-center p-4  flex-col gap-10 flex
+        `}
+    >
       <div>
         <img
           width="40"

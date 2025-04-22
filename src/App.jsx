@@ -1,9 +1,11 @@
-import { Spin } from "antd";
-import React, { Suspense, lazy, useEffect } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import { useDispatch } from "react-redux";
 import { fetchMenuItems } from "./redux/slices/menuSlice";
+import Header from "./components/Header";
+import MobileMenuDrawer from "./components/MobileMenuDrawer";
+import { Spin } from "antd";
 
 // Lazy-loaded pages
 const Home = lazy(() => import("./pages/Home"));
@@ -19,6 +21,7 @@ const FallbackLoader = () => (
 );
 
 function App() {
+  const [showMobileDrawer, setShowMobileDrawer] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,10 +30,14 @@ function App() {
 
   return (
     <Router>
-      {" "}
-      {/* 👈 Wrap everything inside <Router> */}
-      <div className="w-full h-[100vh] flex overflow-hidden">
-        <Sidebar />
+      <Header
+        showMobileDrawer={showMobileDrawer}
+        setShowMobileDrawer={setShowMobileDrawer}
+      />
+      <div className="w-full  flex overflow-hidden">
+        <div className="lg:block hidden">
+          <Sidebar />
+        </div>
 
         <div className="flex-1 overflow-y-auto">
           <Suspense fallback={<FallbackLoader />}>
@@ -44,6 +51,10 @@ function App() {
           </Suspense>
         </div>
       </div>
+      <MobileMenuDrawer
+        setShowMobileDrawer={setShowMobileDrawer}
+        showMobileDrawer={showMobileDrawer}
+      />
     </Router>
   );
 }
