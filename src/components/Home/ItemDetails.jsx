@@ -21,7 +21,7 @@ function ItemDetails() {
   return (
     <div className="w-full bg-[var(--bg)] overflow-y-scroll p-5 rounded-3xl shadow-md">
       <div className="w-full flex justify-center items-center">
-        <img src={item?.itemImages?.[0]} alt="item" width={"55%"} />
+        <img src={item?.itemImages?.[0]} alt="item" className="max-w-[80px]" />
       </div>
 
       {/* ======details===== */}
