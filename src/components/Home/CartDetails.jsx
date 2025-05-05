@@ -24,6 +24,11 @@ function CartDetails() {
     );
   }
 
+  function handleCheckout(){
+    console.log(cartItems)
+   navigate("/checkout")
+  }
+
   return (
     <div className="w-full gap-2 flex flex-col h-full flex-1 bg-[var(--bg)] overflow-hidden p-5 rounded-3xl shadow-md">
       <div className="w-full  flex flex-col gap-1 flex-1 overflow-y-scroll scrollbar-hide  border-red-500">
@@ -38,7 +43,7 @@ function CartDetails() {
       </div>
 
       <button
-        onClick={() => navigate("/checkout")}
+        onClick={handleCheckout}
         className="p-1.5 cursor-pointer rounded-xl w-full  text-[12px] bg-[var(--yellow)] text-white"
       >
         Checkout
